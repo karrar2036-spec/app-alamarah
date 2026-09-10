@@ -2,7 +2,7 @@ name: flutter_application_5
 description: "A new Flutter project."
 publish_to: 'none'
 
-version: 1.0.0+2
+version: 1.0.0+1
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
@@ -26,6 +26,7 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^6.0.0
   flutter_launcher_icons: ^0.14.4
+  flutter_native_splash: ^2.3.1 # أضفنا هذه الحزمة الخاصة بشاشة البداية
 
 flutter:
   uses-material-design: true
@@ -34,9 +35,18 @@ flutter:
   assets:
     - photo/
 
+# إعدادات أيقونة التطبيق الخارجية
 flutter_launcher_icons:
   image_path: "photo/1.png"
   android: true
   ios: true
-  adaptive_icon_background: "#ffffff" # لون خلفية الأيقونة المتكيفة (يمكنك تغييره حسب رغبتك مثل #000000)
-  adaptive_icon_foreground: "photo/1.png" # نفس الصورة أو صورة مخصصة للطبقة الأمامية
+  adaptive_icon_background: "#ffffff"
+  adaptive_icon_foreground: "photo/1.png"
+
+# إعدادات شاشة البداية (Splash Screen) عند فتح التطبيق
+flutter_native_splash:
+  color: "#000000" # لون الخلفية الأسود ليناسب شعارك
+  image: "photo/1.png" # صورة الشعار
+  android_12:
+    color: "#000000"
+    image: "photo/1.png"
