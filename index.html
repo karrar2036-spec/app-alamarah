@@ -1,19 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
   <base href="/app-alamarah/">
 
   <meta charset="UTF-8">
@@ -31,16 +18,59 @@
 
   <title>flutter_application_1</title>
   <link rel="manifest" href="manifest.json">
+
+  <!-- تصميم شاشة البداية بصورتك الخاصة -->
+  <style>
+    body {
+      background-color: #ffffff; /* لون خلفية شاشة التحميل */
+      margin: 0;
+    }
+    #custom-splash {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+    #custom-splash img {
+      width: 130px;
+      height: 130px;
+      object-fit: contain;
+      animation: pulse 1.2s infinite alternate;
+    }
+    @keyframes pulse {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      100% { transform: scale(1.05); opacity: 1; }
+    }
+  </style>
 </head>
 <body>
-  <!--
-    You can customize the "flutter_bootstrap.js" script.
-    This is useful to provide a custom configuration to the Flutter loader
-    or to give the user feedback during the initialization process.
+  <!-- عنصر عرض صورتك أثناء التحميل -->
+  <div id="custom-splash">
+    <img src="photo/1.png" alt="Logo">
+  </div>
 
-    For more details:
-    * https://docs.flutter.dev/platform-integration/web/initialization
-  -->
+  <!-- سكربت لإخفاء صورتك تلقائياً بمجرد اشتغال تطبيق فلاتر -->
+  <script>
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        var splash = document.getElementById('custom-splash');
+        if (splash) {
+          splash.style.opacity = '0';
+          setTimeout(function() {
+            splash.style.display = 'none';
+          }, 500);
+        }
+      }, 1000);
+    });
+  </script>
+
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
